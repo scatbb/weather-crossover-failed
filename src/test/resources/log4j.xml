@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<appender name="sysLogger" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="log/weather-system-test.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd HH" />		
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss}] %c %m%n" />
+		</layout>
+	</appender>
+	<appender name="logicsLogger" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="log/weather-logics-test.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />		
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%m%n" />
+		</layout>
+	</appender>
+	<logger name="logics">
+		<level value="info" />
+		<appender-ref ref="logicsLogger" />
+	</logger>
+	<root>
+		<priority value="debug" />
+		<!-- appender-ref ref="console" / -->
+		<appender-ref ref="sysLogger" />
+	</root>
+</log4j:configuration>
